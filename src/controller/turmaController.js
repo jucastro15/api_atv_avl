@@ -91,4 +91,7 @@ endpoint.delete('/turmad/:id', async (req, res) => {
 });
 
 
+
+
+
 export default endpoint

@@ -71,6 +71,35 @@ export async function removerTurma(id){
 
 
 
+export async function anoLetivo() {
+    let comando = `
+        SELECT
+        nr_ano_letivo,    ano_letivo
+       FROM tb_turma;`
+
+
+    let [info] = await con.query(comando)
+
+    let resultado = info.insertId;
+    return resultado
+
+}
+
+export async function filtrarCurso(ano) {
+    let comando = `
+    SELECT
+    ds_curso     curso
+    FROM tb_turma
+    WHERE nr_ano_letivo = ?;`
+
+
+    let [info] = await con.query(comando[ano])
+
+    let resultado = info.insertId;
+    return resultado
+
+}
+
 
 
 

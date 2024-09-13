@@ -1,7 +1,7 @@
 import con from './controllers.js';
 
 
-export async function adicionarAluno(aluno){
+export async function adicionarAluno(aluno) {
     let comando = `insert into tb_matricula_aluno ( nm_aluno , ds_sexo, dt_nascimento, ds_email, bt_ativo, id_turma)
     value(?,?,?,?,?,?);`
 
@@ -14,7 +14,7 @@ export async function adicionarAluno(aluno){
 
 }
 
-export async function selecionarAluno(){
+export async function selecionarAluno() {
     let comando = `SELECT
     id_matricula_aluno,         id,
     nm_aluno,         aluno,
@@ -33,7 +33,7 @@ export async function selecionarAluno(){
 }
 
 
-export async function mudarAluno(aluno, id){
+export async function mudarAluno(aluno, id) {
     let comando = `
     UPDATE tb_matricula_aluno
     SET 
@@ -54,7 +54,7 @@ export async function mudarAluno(aluno, id){
 
 }
 
-export async function removerAluno(id){
+export async function removerAluno(id) {
     let comando = `
     DELETE FROM tb_matricula_aluno
     WHERE id_matricula_aluno = ?;`
@@ -63,8 +63,10 @@ export async function removerAluno(id){
     let [info] = await con.query(comando[id])
 
 
-    
+
     let resultado = info.affectedRows;
     return resultado
 
 }
+
+
