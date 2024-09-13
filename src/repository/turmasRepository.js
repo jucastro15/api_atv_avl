@@ -16,19 +16,18 @@ export async function adicionarTurma(turma){
 
 export async function selecionarTurma(){
     let comando = `SELECT
-    id_turma,         id,
-    nm_turma,         nome,
-    ds_curso,         curso,
-    nr_ano_letivo,    ano_letivo,
-    qtd_capacidade,   capacidade,
-    bt_ativo,         ativo,
-    dt_inclusao       data_inclusao
+    id_turma  AS        id,
+    nm_turma  AS       nome,
+    ds_curso  AS       curso,
+    nr_ano_letivo AS    ano_letivo,
+    qtd_capacidade AS   capacidade,
+    bt_ativo AS        ativo,
+    dt_inclusao AS      data_inclusao
     FROM tb_turma;`
 
     let [info] = await con.query(comando)
 
-    let msg = info.insertId;
-    return msg;
+    return info;
 
 }
 
@@ -59,7 +58,7 @@ export async function removerTurma(id){
     WHERE id_turma = ?;`
 
 
-    let [info] = await con.query(comando[id])
+    let [info] = await con.query(comando, [id])
 
 
     
@@ -72,21 +71,21 @@ export async function removerTurma(id){
 
 export async function anoLetivo(ano) {
     let comando = `
-        SELECT
-        id_turma,         id,
-        nm_turma,         nome,
-        ds_curso,         curso,
-        nr_ano_letivo,    ano_letivo,
-        qtd_capacidade,   capacidade,
-        bt_ativo,         ativo,
-        dt_inclusao       data_inclusao
-        WHERE nr_ano_letivo = ?
-       FROM tb_turma;`
+    SELECT
+    id_turma  AS        id,
+    nm_turma  AS       nome,
+    ds_curso  AS       curso,
+    nr_ano_letivo AS    ano_letivo,
+    qtd_capacidade AS   capacidade,
+    bt_ativo AS        ativo,
+    dt_inclusao AS      data_inclusao
+    FROM tb_turma
+    WHERE nr_ano_letivo =  ?`
 
 
-    let [info] = await con.query(comando[ano])
+    let [info] = await con.query(comando, [ano])
 
-    let resultado = info.insertId;
+    let resultado = info;
     return resultado
 
 }
@@ -94,20 +93,20 @@ export async function anoLetivo(ano) {
 export async function filtrarCurso(ano, curso) {
     let comando = `
     SELECT
-    id_turma,         id,
-    nm_turma,         nome,
-    ds_curso,         curso,
-    nr_ano_letivo,    ano_letivo,
-    qtd_capacidade,   capacidade,
-    bt_ativo,         ativo,
-    dt_inclusao       data_inclusao
+    id_turma  AS        id,
+    nm_turma  AS       nome,
+    ds_curso  AS       curso,
+    nr_ano_letivo AS    ano_letivo,
+    qtd_capacidade AS   capacidade,
+    bt_ativo AS        ativo,
+    dt_inclusao AS      data_inclusao
     FROM tb_turma
     WHERE nr_ano_letivo = ? and ds_curso = ?;`
 
 
-    let [info] = await con.query(comando[ano, curso])
+    let [info] = await con.query(comando, [ano, curso])
 
-    let resultado = info.insertId;
+    let resultado = info;
     return resultado
 
 }

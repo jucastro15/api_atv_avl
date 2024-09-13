@@ -27,7 +27,7 @@ export async function selecionarAluno() {
 
     let [info] = await con.query(comando)
 
-    let msg = info.insertId;
+    let msg = info;
     return msg;
 
 }
@@ -60,7 +60,7 @@ export async function removerAluno(id) {
     WHERE id_matricula_aluno = ?;`
 
 
-    let [info] = await con.query(comando[id])
+    let [info] = await con.query(comando,[id])
 
 
 
