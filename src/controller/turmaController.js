@@ -90,6 +90,52 @@ endpoint.delete('/turmad/:id', async (req, res) => {
 
 });
 
+endpoint.get('/turma/:ano/curso', async (req, resp) => {
+    
+    let ano = req.params.ano
+    let curso = req.query.curso
+   
+
+    try {
+
+
+        let registro = await db.filtrarCurso(ano, curso);
+
+        resp.status(200).json(registro);
+
+    }
+    catch (err) {
+
+
+        logError(err);
+        resp.status(500).json(err);
+
+    }
+
+
+});
+
+endpoint.get('/turma/buscar/ano', async (req, resp) => {
+
+    try {
+
+        let ano = req.query.ano
+        let registro = await db.anoLetivo(ano);
+
+        resp.status(200).json(registro);
+
+    }
+    catch (err) {
+
+
+        logError(err);
+        resp.status(500).json(err);
+
+    }
+
+
+});
+
 
 
 
