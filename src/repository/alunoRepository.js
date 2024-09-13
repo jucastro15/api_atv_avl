@@ -6,7 +6,7 @@ export async function adicionarAluno(aluno) {
     value(?,?,?,?,?,?);`
 
 
-    let [info] = await con.query(comando, [aluno.aluno, aluno.curso, aluno.ano_letivo, aluno.capacidade, aluno.ativo, aluno.inclusao]);
+    let [info] = await con.query(comando, [aluno.aluno, aluno.sexo, aluno.nascimento, aluno.email, aluno.ativo, aluno.turma]);
 
 
     let msg = info.insertId;
@@ -16,12 +16,12 @@ export async function adicionarAluno(aluno) {
 
 export async function selecionarAluno() {
     let comando = `SELECT
-    id_matricula_aluno,         id,
-    nm_aluno,         aluno,
-    ds_sexo,          sexo,
-    dt_nascimento,    nascimento,
-    ds_email,         email,
-    bt_ativo,         ativo,
+    id_matricula_aluno         id,
+    nm_aluno                 aluno,
+    ds_sexo          sexo,
+    dt_nascimento    nascimento,
+    ds_email         email,
+    bt_ativo         ativo,
     id_turma          turma
     FROM tb_matricula_aluno;`
 
