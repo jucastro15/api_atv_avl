@@ -1,4 +1,4 @@
-export default function datahora(){
+export  function horatual(){
     let agora= new Date();
     let msg =  agora.toLocaleDateString() + ' ' + agora.toLocaleTimeString();
 

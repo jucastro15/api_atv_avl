@@ -1,16 +1,17 @@
-import{ datahora} from './datahora.js';
+import { horatual } from "./datahora.js"
 
+global.criarErro = function criarErro(err) {
 
- global.criarErro = function criarErro(err){
+    let obj =
+    {
+        erro: err.message
+    };
 
-    let obj = {
-       erro : err.messagem
-    }   
-    
     return obj;
 }
 
 
-.global.logError = function logError(err){     
-     console.log(datahora() + ' ---> Error -> ' + err.message);
- }
+
+global.logError = function logError(err) {
+    console.log(horatual() + 'ERROR --->' + err.menssage)
+}
